@@ -1,0 +1,46 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:zed.dev)",
+
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(pre-commit run:*)",
+      "Bash(cargo:*)",
+      "Bash(sed:*)",
+      "Bash(rg:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(rustc --version)",
+      "Bash(./gradlew:*)",
+      "Bash(../gradlew test:*)",
+      "Bash(grep:*)",
+
+      "mcp__basic-memory__write_note",
+      "mcp__basic-memory__list_directory",
+      "mcp__basic-memory__read_note",
+      "mcp__basic-memory__search_notes",
+      "mcp__basic-memory__edit_note",
+      "mcp__basic-memory__delete_note",
+
+      "mcp__github__get_file_contents",
+      "mcp__github__list_commits",
+      "mcp__github__search_code",
+      "mcp__github__search_repositories",
+      "mcp__github__list_workflow_runs",
+      "mcp__github__list_workflows",
+      "mcp__github__get_job_logs",
+      "mcp__github__list_workflow_jobs",
+      "mcp__github__get_workflow_run",
+
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__get-library-docs",
+
+      "mcp__sequential-thinking__sequentialthinking"
+    ],
+    "deny": []
+  }
+}
