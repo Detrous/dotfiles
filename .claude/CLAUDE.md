@@ -35,7 +35,8 @@
   - Context7: Use for library documentation lookup
 - **Documentation lookup:**
   - First try context7 MCP for library docs
-  - Fallback to WebSearch or GitHub repository docs
+  - Fallback to GitHub repository docs as the authoritative source
+  - Use WebSearch only if GitHub docs are unavailable
   - Never assume library APIs - always verify current syntax
 - **Search before implementing**
 
