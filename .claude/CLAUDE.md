@@ -47,16 +47,16 @@
 ### Working with CLAUDE.md Files
 - **Purpose** - Project-specific guidance for Claude Code
 - **Keep it focused** - Include only essential project context
+- **Be concise** - Prefer minimal, focused content over exhaustive documentation
 - **Content guidelines:**
-  - Overall architecture and tech stack
-  - Key patterns and conventions
-  - Build/test/lint commands
-  - Project structure overview
-  - Important dependencies
-  - Non-obvious workflows
+  - Brief overview (1-2 lines)
+  - Essential commands only
+  - High-level architecture points
+  - Critical patterns to know
 - **Avoid including:**
   - Generic best practices
   - Detailed API docs
   - File-by-file listings
   - Obvious instructions
+  - Excessive implementation details
 - **Update when** - Architecture changes significantly
