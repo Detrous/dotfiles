@@ -43,3 +43,20 @@
 ### Communication Style
 - Be concise and direct
 - Avoid unnecessary apologies or explanations
+
+### Working with CLAUDE.md Files
+- **Purpose** - Project-specific guidance for Claude Code
+- **Keep it focused** - Include only essential project context
+- **Content guidelines:**
+  - Overall architecture and tech stack
+  - Key patterns and conventions
+  - Build/test/lint commands
+  - Project structure overview
+  - Important dependencies
+  - Non-obvious workflows
+- **Avoid including:**
+  - Generic best practices
+  - Detailed API docs
+  - File-by-file listings
+  - Obvious instructions
+- **Update when** - Architecture changes significantly
