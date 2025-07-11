@@ -16,7 +16,7 @@
   4. Move to the next small change
 - **Each iteration must be complete** - Every change should leave the codebase in a working state
 - **Commit frequently** - After each successful iteration with passing tests, commit before proceeding
-- **Auto-commit after completing tasks** - When you complete a task (especially when using TodoWrite), immediately commit ONLY the files you modified. Use `git add <specific files>` then `git commit` with a concise message. NEVER use `git add -A` or `git add .` as this may stage unrelated changes
+- **MUST commit when wrapping up any task** - After completing ANY task (documentation update, code change with passing tests, etc.), immediately commit ONLY the files you modified. Use `git add <specific files>` then `git commit` with a concise message. NEVER use `git add -A` or `git add .` as this may stage unrelated changes. No exceptions - if you made changes and finished the task, COMMIT IMMEDIATELY
 
 ### Task Planning & Execution
 - **Understand before coding** - First understand current architecture, identify files to modify
