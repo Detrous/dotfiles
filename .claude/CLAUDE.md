@@ -31,6 +31,8 @@
 - **Optimize for readability** - Code is read more than written
 - **No dummy implementations** - Always implement fully working code
 - **Follow existing patterns** - Match the codebase's style, libraries, and conventions
+- **No comments unless requested** - Don't add code comments unless explicitly asked
+- **Single responsibility principle** - Each component should do one thing well
 
 ### Tool Usage
 - **MCP Tools:**
