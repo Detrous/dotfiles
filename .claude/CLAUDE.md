@@ -1,11 +1,14 @@
 ### Git Commit Guidelines
 - Keep commit messages short and concise (1 line)
 - No additional descriptions or explanations in commit messages
+- No emojis, Co-Authored-By lines, or GitHub-style formatting
 - Focus on what changed, not why
 
 ### Development Approach - Changes/Refactoring/Features
 - **Always make the smallest change possible** - Break down work into minimal, atomic changes
+- **Don't rename or change existing code unnecessarily** - Keep function names, variable names, and patterns unless explicitly asked to change them
 - **Keep tests green** - Ensure all tests pass after each change. Never leave tests broken between iterations
+- **Run all tests for the service before committing** - Not just the specific test files you modified
 - **Iterative approach mandatory** - NEVER perform global changes at once. Instead:
   1. Make one small, focused change
   2. Fix any broken tests immediately
