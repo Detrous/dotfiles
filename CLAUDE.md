@@ -18,8 +18,9 @@ dotfiles/
 │   ├── CLAUDE.md     # Global coding guidelines (symlinked to ~/.claude/)
 │   ├── settings.json # Claude permissions and allowed commands
 │   └── commands/     # Custom Claude commands
-│       ├── learn.md  # Session summary command template
-│       └── sync-settings.md  # Sync local permissions to global settings
+│       ├── learn.md          # Session summary command template
+│       ├── sync-settings.md  # Sync local permissions to global settings
+│       └── update-claude-md.md  # Update project CLAUDE.md files
 ├── .config/          # Application configurations
 │   └── zed/          # Zed editor settings
 │       ├── keymap.json
