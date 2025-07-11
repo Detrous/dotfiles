@@ -60,3 +60,6 @@
   - Obvious instructions
   - Excessive implementation details
 - **Update when** - Architecture changes significantly
+
+### Global CLAUDE.md Management
+- **Location** - Global CLAUDE.md is in `~/dotfiles/.claude/CLAUDE.md` (not `~/.claude/`)
