@@ -3,6 +3,7 @@
     "allow": [
       "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:github.com)",
+      "WebFetch(domain:gitlab.com)",
       "WebFetch(domain:zed.dev)",
 
       "Bash(mkdir:*)",
@@ -22,8 +23,15 @@
       "Bash(./gradlew:*)",
       "Bash(../gradlew test:*)",
 
+      "Bash(npm test:*)",
+      "Bash(npm run lint)",
+
       "Bash(git add:*)",
       "Bash(git commit:*)",
+      "Bash(git checkout:*)",
+
+      "Bash(gh run list:*)",
+      "Bash(gh run view:*)",
 
       "mcp__context7__resolve-library-id",
       "mcp__context7__get-library-docs",
