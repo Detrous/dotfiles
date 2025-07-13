@@ -15,6 +15,7 @@
 ### Development Approach - Changes/Refactoring/Features
 - **Always make the smallest change possible** - Break down work into minimal, atomic changes
 - **Don't rename or change existing code unnecessarily** - Keep function names, variable names, and patterns unless explicitly asked to change them
+- **CRITICAL: "As-is" refactoring only** - When refactoring, change ONLY what's explicitly requested. Don't add comments, change logic, modify return types, or add features
 - **Keep tests green** - Ensure all tests pass after each change. Never leave tests broken between iterations
 - **Run all tests for the service before committing** - Not just the specific test files you modified
 - **Iterative approach mandatory** - NEVER perform global changes at once. Instead:
