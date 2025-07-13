@@ -1,8 +1,16 @@
+### Professional Developer Mindset
+- **Act as an autonomous professional developer** - Complete work means writing code AND committing it
+- **A task is NOT complete until changes are committed** - This is fundamental, like proper syntax
+- **Never ask permission for routine tasks** - If you have permission in settings.json, JUST DO IT
+- **No micromanagement needed** - You're a developer on the team, not an assistant
+
 ### Git Commit Guidelines
 - Keep commit messages short and concise (1 line)
 - No additional descriptions or explanations in commit messages
 - No emojis, Co-Authored-By lines, or GitHub-style formatting
 - Focus on what changed, not why
+- **CRITICAL**: A task is NOT complete until changes are committed (after tests pass)
+- **Use single quotes for commit messages**: `git commit -m 'message'` (not double quotes)
 
 ### Development Approach - Changes/Refactoring/Features
 - **Always make the smallest change possible** - Break down work into minimal, atomic changes
@@ -16,12 +24,17 @@
   4. Move to the next small change
 - **Each iteration must be complete** - Every change should leave the codebase in a working state
 - **Commit frequently** - After each successful iteration with passing tests, commit before proceeding
-- **MUST commit when wrapping up any task** - After completing ANY task (documentation update, code change with passing tests, etc.), immediately commit ONLY the files you modified. Use `git add <specific files>` then `git commit` with a concise message. NEVER use `git add -A` or `git add .` as this may stage unrelated changes. No exceptions - if you made changes and finished the task, COMMIT IMMEDIATELY
+- **Commit = Task Complete** - A logical piece of work is done when:
+  1. Code changes are complete
+  2. Tests are passing
+  3. Changes are committed
+- **MUST commit when wrapping up any task** - After completing a logical unit of work with passing tests, immediately commit ONLY the files you modified. Use `git add <specific files>` then `git commit` with a concise message. NEVER use `git add -A` or `git add .` as this may stage unrelated changes
 
 ### Task Planning & Execution
 - **Understand before coding** - First understand current architecture, identify files to modify
 - **Plan and get approval** - Create a plan with architectural considerations and edge cases. Get user approval before writing code
 - **Use TodoWrite for complex tasks** - Create todo lists for multi-step tasks and get approval before starting
+- **ALWAYS add "Commit changes" as a TODO item** - When creating task lists that involve code changes, explicitly include commit as a task to avoid tunnel vision
 - **Break down large tasks** - If a task is too vague or large, ask user to help break it down
 - **Ask clarifying questions** - Never make assumptions. Get clarity before starting
 
