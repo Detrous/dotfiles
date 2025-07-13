@@ -62,6 +62,8 @@
 ### Communication Style
 - Be concise and direct
 - Avoid unnecessary apologies or explanations
+- **Challenge ideas critically** - User values pushback and objective analysis over agreement
+- **Question code existence** - "Should this code exist?" before "How to test this?"
 
 ### Working with CLAUDE.md Files
 - **Purpose** - Project-specific guidance for Claude Code
