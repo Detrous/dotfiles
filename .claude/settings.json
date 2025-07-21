@@ -1,41 +1,54 @@
 {
   "permissions": {
     "allow": [
+      "Bash(../gradlew test:*)",
+      "Bash(./gradlew:*)",
+      "Bash(cargo:*)",
+      
+      "Bash(cat:*)",
+      "Bash(cp:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(rg:*)",
+      "Bash(rm:*)",
+      "Bash(sed:*)",
+      
+      "Bash(git add:*)",
+      "Bash(git checkout:*)",
+      "Bash(git commit:*)",
+      "Bash(git fetch:*)",
+      "Bash(git push:*)",
+      "Bash(git reset:*)",
+      "Bash(git restore:*)",
+      "Bash(git stash:*)",
+      "Bash(git tag:*)",
+      "Bash(git worktree:*)",
+      
+      "Bash(gh run list:*)",
+      "Bash(gh run view:*)",
+      "Bash(gh workflow:*)",
+      
+      "Bash(npm run format:*)",
+      "Bash(npm run lint)",
+      "Bash(npm run lint:*)",
+      "Bash(npm run test:*)",
+      "Bash(npm test:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx ts-node:*)",
+      
+      "Bash(pre-commit run:*)",
+      "Bash(rustc --version)",
+      
       "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:gitlab.com)",
       "WebFetch(domain:zed.dev)",
-
-      "Bash(mkdir:*)",
-      "Bash(mv:*)",
-
-      "Bash(find:*)",
-      "Bash(ls:*)",
-      "Bash(grep:*)",
-      "Bash(sed:*)",
-      "Bash(rg:*)",
-
-      "Bash(pre-commit run:*)",
-
-      "Bash(rustc --version)",
-      "Bash(cargo:*)",
-
-      "Bash(./gradlew:*)",
-      "Bash(../gradlew test:*)",
-
-      "Bash(npm test:*)",
-      "Bash(npm run lint)",
-
-      "Bash(git add:*)",
-      "Bash(git commit:*)",
-      "Bash(git checkout:*)",
-
-      "Bash(gh run list:*)",
-      "Bash(gh run view:*)",
-
-      "mcp__context7__resolve-library-id",
+      
       "mcp__context7__get-library-docs",
-
+      "mcp__context7__resolve-library-id",
       "mcp__sequential-thinking__sequentialthinking"
     ],
     "deny": []
