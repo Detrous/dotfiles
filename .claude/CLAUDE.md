@@ -60,3 +60,9 @@
 - Be concise and direct
 - Avoid unnecessary apologies or explanations
 - Question code existence: "Should this code exist?" before "How to test this?"
+- **Error signal: "..."** - When user responds with only dots, immediately:
+  1. Stop current action
+  2. Engage critical thinking mode - analyze deeply what went wrong
+  3. Re-read the original request with extreme attention to detail
+  4. Identify where I misunderstood or deviated from instructions
+  5. Correct course based on actual user intent
