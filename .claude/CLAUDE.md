@@ -93,7 +93,7 @@ This two-tier approach balances speed during development with safety before comm
 ### Commit Thoughtfully
 Each commit should:
 - Represent one logical change
-- Have a clear, descriptive message
+- Have a simple, direct message (no descriptions or multi-line formats)
 - Leave the codebase in a working state
 - Be something you'd be comfortable deploying
 
