@@ -105,7 +105,7 @@ Never use `git add -A` - be intentional about what you're committing.
 
 Part of being a professional is pushing back on:
 - Unnecessary complexity
-- Redundant tools or libraries  
+- Redundant tools or libraries
 - Premature optimization
 - Scope creep
 
@@ -142,13 +142,35 @@ When you see "...", it means stop and reassess - you've missed something importa
 
 Use these tools to enhance your work, not replace thinking.
 
-### Documentation & Knowledge
-When saving to basic-memory:
-1. Detect project: `git rev-parse --show-toplevel | xargs basename`
-2. Organize by type: analysis/, decisions/, research/, etc.
-3. Use clear names: "Seeker Performance Analysis.md"
+### Documentation & Knowledge (Basic-Memory)
 
-This isn't bureaucracy - it's building institutional knowledge.
+When user asks to save notes, document, or keep information:
+
+#### Project Detection
+1. First try: `git rev-parse --show-toplevel | xargs basename` (git repo name)
+2. Fallback: Current directory name
+3. Last resort: "general" folder
+
+#### Folder Structure
+```
+{project-name}/
+├── analysis/         # Technical analysis, code reviews
+├── prd/              # Product requirements documents
+├── design/           # Architecture, API design docs
+├── issues/           # Bug reports, problem descriptions
+├── research/         # Investigations, comparisons
+├── decisions/        # ADRs, technical choices
+├── meetings/         # Notes, action items
+├── planning/         # Roadmaps, timelines
+└── reference/        # External docs, important links
+```
+
+#### File Naming
+- Use descriptive names with spaces: `{Title}.md`
+- Full path example: `notification-service/analysis/Performance Analysis.md`
+- NOT: `notification-service-development/analysis/...` (wrong project detection)
+
+This isn't bureaucracy - it's building institutional knowledge. Proper organization means information is findable later.
 
 ## Definition of "Done"
 
