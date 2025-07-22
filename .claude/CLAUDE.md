@@ -93,19 +93,23 @@
   - Create analysis, PRDs, or design docs
   - Store research, meeting notes, or decisions
   - Keep any non-code documentation
-- **Project Structure** - Organize documents hierarchically:
+- **Project Structure** - Organize documents with this exact hierarchy:
   ```
-  project-name/          # Auto-detected from: git repo > current dir > "general"
-  ├── prd/              # Product requirements documents
+  {project-name}/        # Auto-detected from: git repo > current dir > "general"
   ├── analysis/         # Technical analysis, code reviews
-  ├── issues/           # Bug reports, problem descriptions
+  ├── prd/              # Product requirements documents
   ├── design/           # Architecture, API design docs
+  ├── issues/           # Bug reports, problem descriptions
   ├── research/         # Investigations, comparisons
   ├── decisions/        # ADRs, technical choices
   ├── meetings/         # Notes, action items
   ├── planning/         # Roadmaps, timelines
   └── reference/        # External docs, important links
   ```
+- **File Naming Convention**: 
+  - Use descriptive names with spaces: `{Title}.md`
+  - Example: `{project-name}/analysis/Library Structure Analysis.md`
+  - NOT: `analysis/Library Structure Analysis.md` (missing project prefix)
 - **Smart Detection** - Automatically determine:
   - Project name: Git repo name > current directory > "general" folder
   - Document type: Based on content keywords and user request
