@@ -54,6 +54,12 @@
   - Sequential-thinking: Use for complex problem planning
   - Context7: Use for library documentation lookup
   - Basic-memory: Use for persistent document storage (see Document Storage section)
+- **GitHub Operations (gh CLI):**
+  - **Use gh for all GitHub API operations** - PRs, issues, releases, workflows
+  - **PR creation**: `gh pr create` with structured body via HEREDOC
+  - **Issue management**: `gh issue create/list/view`
+  - **Repository insights**: `gh api` for detailed GitHub data
+  - **Prefer gh over web-based operations** - More reliable and scriptable
 - **Documentation lookup hierarchy:**
   1. Context7 MCP for library docs
   2. GitHub repository docs (authoritative source)
