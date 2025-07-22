@@ -15,6 +15,10 @@
       "Bash(rg:*)",
       "Bash(rm:*)",
       "Bash(sed:*)",
+      "Bash(stat:*)",
+      "Bash(file:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
 
       "Bash(git add:*)",
       "Bash(git checkout:*)",
