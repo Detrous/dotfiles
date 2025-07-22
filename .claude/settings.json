@@ -45,12 +45,20 @@
       "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:gitlab.com)",
+      "WebFetch(domain:www.npmjs.com)",
       "WebFetch(domain:zed.dev)",
+
+      "Bash(npm install:*)",
+      "Bash(npm uninstall:*)",
 
       "mcp__context7__get-library-docs",
       "mcp__context7__resolve-library-id",
       "mcp__sequential-thinking__sequentialthinking",
-      "mcp__basic-memory__write_note"
+      "mcp__basic-memory__write_note",
+      "mcp__basic-memory__delete_note",
+      "mcp__basic-memory__move_note",
+      "mcp__basic-memory__list_directory",
+      "mcp__basic-memory__read_note"
     ],
     "deny": []
   }
