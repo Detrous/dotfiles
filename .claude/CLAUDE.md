@@ -53,6 +53,7 @@
 - **MCP Tools:**
   - Sequential-thinking: Use for complex problem planning
   - Context7: Use for library documentation lookup
+  - Basic-memory: Use for persistent document storage (see Document Storage section)
 - **Documentation lookup hierarchy:**
   1. Context7 MCP for library docs
   2. GitHub repository docs (authoritative source)
@@ -85,3 +86,27 @@
 - **No Vague Assertions**: Avoid `assert!(len > 0)` or checking just counts
 - **Use Test Helpers**: Leverage macros and helpers for cleaner tests
 - **Test Behavior, Not Implementation**: Focus on what the code does, not how
+
+### Document Storage (Basic-Memory MCP)
+- **When to use** - Store in basic-memory when user asks to:
+  - "Save to notes" or "document this"
+  - Create analysis, PRDs, or design docs
+  - Store research, meeting notes, or decisions
+  - Keep any non-code documentation
+- **Project Structure** - Organize documents hierarchically:
+  ```
+  project-name/          # Auto-detected from: git repo > current dir > "general"
+  ├── prd/              # Product requirements documents
+  ├── analysis/         # Technical analysis, code reviews
+  ├── issues/           # Bug reports, problem descriptions
+  ├── design/           # Architecture, API design docs
+  ├── research/         # Investigations, comparisons
+  ├── decisions/        # ADRs, technical choices
+  ├── meetings/         # Notes, action items
+  ├── planning/         # Roadmaps, timelines
+  └── reference/        # External docs, important links
+  ```
+- **Smart Detection** - Automatically determine:
+  - Project name: Git repo name > current directory > "general" folder
+  - Document type: Based on content keywords and user request
+  - Folder placement: Match document type to appropriate subfolder
