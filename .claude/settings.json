@@ -30,6 +30,7 @@
       "Bash(gh run list:*)",
       "Bash(gh run view:*)",
       "Bash(gh workflow:*)",
+      "Bash(gh api:*)",
 
       "Bash(npm run format:*)",
       "Bash(npm run lint)",
@@ -56,6 +57,7 @@
       "mcp__sequential-thinking__sequentialthinking",
       "mcp__basic-memory__write_note",
       "mcp__basic-memory__delete_note",
+      "mcp__basic-memory__edit_note",
       "mcp__basic-memory__move_note",
       "mcp__basic-memory__list_directory",
       "mcp__basic-memory__read_note"
