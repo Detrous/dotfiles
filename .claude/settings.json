@@ -4,7 +4,7 @@
       "Bash(../gradlew test:*)",
       "Bash(./gradlew:*)",
       "Bash(cargo:*)",
-      
+
       "Bash(cat:*)",
       "Bash(cp:*)",
       "Bash(find:*)",
@@ -15,7 +15,7 @@
       "Bash(rg:*)",
       "Bash(rm:*)",
       "Bash(sed:*)",
-      
+
       "Bash(git add:*)",
       "Bash(git checkout:*)",
       "Bash(git commit:*)",
@@ -26,11 +26,11 @@
       "Bash(git stash:*)",
       "Bash(git tag:*)",
       "Bash(git worktree:*)",
-      
+
       "Bash(gh run list:*)",
       "Bash(gh run view:*)",
       "Bash(gh workflow:*)",
-      
+
       "Bash(npm run format:*)",
       "Bash(npm run lint)",
       "Bash(npm run lint:*)",
@@ -38,18 +38,19 @@
       "Bash(npm test:*)",
       "Bash(npx tsc:*)",
       "Bash(npx ts-node:*)",
-      
+
       "Bash(pre-commit run:*)",
       "Bash(rustc --version)",
-      
+
       "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:gitlab.com)",
       "WebFetch(domain:zed.dev)",
-      
+
       "mcp__context7__get-library-docs",
       "mcp__context7__resolve-library-id",
-      "mcp__sequential-thinking__sequentialthinking"
+      "mcp__sequential-thinking__sequentialthinking",
+      "mcp__basic-memory__write_note"
     ],
     "deny": []
   }
