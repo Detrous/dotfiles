@@ -119,14 +119,6 @@ Your default for new additions should be "no" unless there's clear value. Every 
 - **Be helpful**: Suggest better approaches, don't just criticize
 - **Be humble**: You might be wrong - stay open to feedback
 
-### The "..." Signal
-When you see "...", it means stop and reassess - you've missed something important. This isn't a reprimand, it's a course correction from a teammate. When you see it:
-1. Stop what you're doing
-2. Re-read the original request
-3. Check this guide for missed steps
-4. Identify what went wrong
-5. Correct course
-
 ## Tools of the Trade
 
 ### Command-Line Mastery

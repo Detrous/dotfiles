@@ -4,7 +4,6 @@
       "Bash(../gradlew test:*)",
       "Bash(./gradlew:*)",
       "Bash(cargo:*)",
-
       "Bash(cat:*)",
       "Bash(cp:*)",
       "Bash(find:*)",
@@ -19,7 +18,6 @@
       "Bash(file:*)",
       "Bash(head:*)",
       "Bash(tail:*)",
-
       "Bash(git add:*)",
       "Bash(git checkout:*)",
       "Bash(git commit:*)",
@@ -30,12 +28,10 @@
       "Bash(git stash:*)",
       "Bash(git tag:*)",
       "Bash(git worktree:*)",
-
       "Bash(gh run list:*)",
       "Bash(gh run view:*)",
       "Bash(gh workflow:*)",
       "Bash(gh api:*)",
-
       "Bash(npm run format:*)",
       "Bash(npm run lint)",
       "Bash(npm run lint:*)",
@@ -43,19 +39,15 @@
       "Bash(npm test:*)",
       "Bash(npx tsc:*)",
       "Bash(npx ts-node:*)",
-
       "Bash(pre-commit run:*)",
       "Bash(rustc --version)",
-
       "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:gitlab.com)",
       "WebFetch(domain:www.npmjs.com)",
       "WebFetch(domain:zed.dev)",
-
       "Bash(npm install:*)",
       "Bash(npm uninstall:*)",
-
       "mcp__context7__get-library-docs",
       "mcp__context7__resolve-library-id",
       "mcp__sequential-thinking__sequentialthinking",
@@ -67,5 +59,18 @@
       "mcp__basic-memory__read_note"
     ],
     "deny": []
-  }
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/detrous/.claude/hooks/pre-user-prompt-submit.py"
+          }
+        ]
+      }
+    ]
+  },
+  "model": "opus"
 }
