@@ -17,10 +17,14 @@ dotfiles/
 ├── .claude/          # Claude AI configuration
 │   ├── CLAUDE.md     # Global coding guidelines (symlinked to ~/.claude/)
 │   ├── settings.json # Claude permissions and allowed commands
-│   └── commands/     # Custom Claude commands
-│       ├── learn.md          # Session summary command template
-│       ├── sync-settings.md  # Sync local permissions to global settings
-│       └── update-claude-md.md  # Update project CLAUDE.md files
+│   ├── settings.local.json # Local permission overrides (not tracked in git)
+│   ├── commands/     # Custom Claude commands
+│   │   ├── learn.md          # Session summary command template
+│   │   ├── run.md            # Structured task execution command
+│   │   ├── sync-settings.md  # Sync local permissions to global settings
+│   │   └── update-claude-md.md  # Update project CLAUDE.md files
+│   └── hooks/        # Pre/post action hooks
+│       └── pre-user-prompt-submit.py  # Hook executed before user prompts
 ├── .config/          # Application configurations
 │   └── zed/          # Zed editor settings
 │       ├── keymap.json
@@ -28,6 +32,15 @@ dotfiles/
 │       └── tasks.json
 └── setup.sh          # Setup script for creating symlinks
 ```
+
+## Custom Claude Commands
+- `/learn` - Generate session summaries and learnings
+- `/run` - Execute structured tasks with iterative commits
+- `/sync-settings` - Sync local permission overrides to global settings
+- `/update-claude-md` - Update project CLAUDE.md documentation
+
+## Hooks
+- **pre-user-prompt-submit.py** - Validates and enhances user prompts before execution
 
 ## Development Workflow
 1. Edit configuration files in this repository
