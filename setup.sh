@@ -19,9 +19,9 @@ rm -f "$HOME/.config/zed/keymap.json"
 rm -f "$HOME/.config/zed/settings.json"
 rm -f "$HOME/.config/zed/tasks.json"
 
-ln -s "$DOTFILES_DIR/.config/zed/keymap.json" "$HOME/.config/zed/keymap.json"
-ln -s "$DOTFILES_DIR/.config/zed/settings.json" "$HOME/.config/zed/settings.json"
-ln -s "$DOTFILES_DIR/.config/zed/tasks.json" "$HOME/.config/zed/tasks.json"
+ln -s "$DOTFILES_DIR/zed/config/keymap.json" "$HOME/.config/zed/keymap.json"
+ln -s "$DOTFILES_DIR/zed/config/settings.json" "$HOME/.config/zed/settings.json"
+ln -s "$DOTFILES_DIR/zed/config/tasks.json" "$HOME/.config/zed/tasks.json"
 
 echo "Claude config linked"
 echo "Zed config linked"

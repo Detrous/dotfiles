@@ -9,7 +9,7 @@ This is a personal dotfiles repository for managing configuration files across d
 - **Main setup command**: `./setup.sh` - Creates symlinks for all configuration files
   - Removes existing symlinks/files before creating new ones
   - Links Claude configuration from `.claude/` to `~/.claude/`
-  - Links Zed editor configuration from `.config/zed/` to `~/.config/zed/`
+  - Links Zed editor configuration from `zed/config/` to `~/.config/zed/`
 
 ## Repository Structure
 ```
@@ -25,8 +25,8 @@ dotfiles/
 │   │   └── update-claude-md.md  # Update project CLAUDE.md files
 │   └── hooks/        # Pre/post action hooks
 │       └── pre-user-prompt-submit.py  # Hook executed before user prompts
-├── .config/          # Application configurations
-│   └── zed/          # Zed editor settings
+├── zed/              # Zed editor files
+│   └── config/       # Zed configuration
 │       ├── keymap.json
 │       ├── settings.json
 │       └── tasks.json
