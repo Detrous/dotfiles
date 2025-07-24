@@ -28,6 +28,7 @@
       "Bash(git stash:*)",
       "Bash(git tag:*)",
       "Bash(git worktree:*)",
+      "Bash(git submodule add:*)",
       "Bash(gh run list:*)",
       "Bash(gh run view:*)",
       "Bash(gh workflow:*)",
