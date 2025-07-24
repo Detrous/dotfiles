@@ -8,13 +8,13 @@ This is a personal dotfiles repository for managing configuration files across d
 ## Setup and Installation
 - **Main setup command**: `./setup.sh` - Creates symlinks for all configuration files
   - Removes existing symlinks/files before creating new ones
-  - Links Claude configuration from `.claude/` to `~/.claude/`
+  - Links Claude configuration from `claude/` to `~/.claude/`
   - Links Zed editor configuration from `zed/config/` to `~/.config/zed/`
 
 ## Repository Structure
 ```
 dotfiles/
-├── .claude/          # Claude AI configuration
+├── claude/           # Claude AI configuration
 │   ├── CLAUDE.md     # Global coding guidelines (symlinked to ~/.claude/)
 │   ├── settings.json # Claude permissions and allowed commands
 │   ├── settings.local.json # Local permission overrides (not tracked in git)
@@ -45,10 +45,10 @@ dotfiles/
 ## Development Workflow
 1. Edit configuration files in this repository
 2. Run `./setup.sh` to update symlinks
-3. Commit changes following the guidelines in `.claude/CLAUDE.md`
+3. Commit changes following the guidelines in `claude/CLAUDE.md`
 
 ## Important Notes
 - Changes to configuration files take effect after running `./setup.sh`
 - The setup script removes existing files/symlinks before creating new ones
-- Local overrides (like `.claude/settings.local.json`) are not tracked in git
-- Follow the iterative development approach outlined in `.claude/CLAUDE.md` when making changes
+- Local overrides (like `claude/settings.local.json`) are not tracked in git
+- Follow the iterative development approach outlined in `claude/CLAUDE.md` when making changes
