@@ -26,10 +26,12 @@ dotfiles/
 │   └── hooks/        # Pre/post action hooks
 │       └── pre-user-prompt-submit.py  # Hook executed before user prompts
 ├── zed/              # Zed editor files
-│   └── config/       # Zed configuration
-│       ├── keymap.json
-│       ├── settings.json
-│       └── tasks.json
+│   ├── config/       # Zed configuration
+│   │   ├── keymap.json
+│   │   ├── settings.json
+│   │   └── tasks.json
+│   └── plugins/      # Zed plugins (git submodules)
+│       └── claude-code-zed/  # Claude Code integration for Zed
 └── setup.sh          # Setup script for creating symlinks
 ```
 
