@@ -1,3 +1,3 @@
 [submodule "zed/plugins/claude-code-zed"]
 	path = zed/plugins/claude-code-zed
-	url = https://github.com/jiahaoxiang2000/claude-code-zed.git
+	url = https://github.com/Detrous/claude-code-zed.git
