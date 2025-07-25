@@ -51,12 +51,6 @@
           }
         }
       }
-    },
-    "kotlin-lsp": {
-      "binary": {
-        "path": "/Users/detrous/.kotlin-lsp/kotlin-lsp.sh",
-        "arguments": ["--stdio"]
-      }
     }
   },
   "languages": {
