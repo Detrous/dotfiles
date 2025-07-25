@@ -23,5 +23,13 @@ ln -s "$DOTFILES_DIR/zed/config/keymap.json" "$HOME/.config/zed/keymap.json"
 ln -s "$DOTFILES_DIR/zed/config/settings.json" "$HOME/.config/zed/settings.json"
 ln -s "$DOTFILES_DIR/zed/config/tasks.json" "$HOME/.config/zed/tasks.json"
 
+# Zsh config
+rm -f "$HOME/.zshrc"
+rm -f "$HOME/.zprofile"
+
+ln -s "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
+ln -s "$DOTFILES_DIR/zsh/.zprofile" "$HOME/.zprofile"
+
 echo "Claude config linked"
 echo "Zed config linked"
+echo "Zsh config linked"
