@@ -76,8 +76,7 @@
     },
     "env": {
       "VIRTUAL_ENV": ".venv",
-      "PATH": ".venv/bin:$PATH",
-      "PYTHONPATH": "${PYTHONPATH}:./src"
+      "PATH": ".venv/bin:$PATH"
     }
   },
   "file_types": {
