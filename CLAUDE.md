@@ -49,6 +49,18 @@ dotfiles/
 2. Run `./setup.sh` to update symlinks
 3. Commit changes following the guidelines in `claude/CLAUDE.md`
 
+## Commit Message Conventions
+Use prefixes to indicate which component is being modified:
+- `Zed:` - Changes to Zed editor configuration or plugins
+- `Claude:` - Changes to Claude configuration, commands, or hooks
+- `Setup:` - Changes to setup scripts or installation process
+- `Docs:` - Documentation updates
+
+Examples:
+- `Zed: Enable claude-code-server for Kotlin files`
+- `Claude: Add new command for project analysis`
+- `Setup: Fix symlink creation for nested directories`
+
 ## Important Notes
 - Changes to configuration files take effect after running `./setup.sh`
 - The setup script removes existing files/symlinks before creating new ones

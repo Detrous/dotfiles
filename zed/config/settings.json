@@ -63,9 +63,8 @@
     "Python": {
       "language_servers": ["basedpyright", "!pyright", "claude-code-server"]
     },
-    "kotlin": {
-      "language_servers": ["kotlin-lsp"],
-      "enable_language_server": false
+    "Kotlin": {
+      "language_servers": ["claude-code-server", "kotlin-lsp"]
     }
   },
   "terminal": {
