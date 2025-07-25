@@ -9,10 +9,10 @@
   {
     "context": "Workspace",
     "bindings": {
-      "cmd-r left": "workspace::ActivatePaneLeft",
-      "cmd-r down": "workspace::ActivatePaneDown",
-      "cmd-r up": "workspace::ActivatePaneUp",
-      "cmd-r right": "workspace::ActivatePaneRight"
+      "cmd-r h": "workspace::ActivatePaneLeft",
+      "cmd-r j": "workspace::ActivatePaneDown",
+      "cmd-r k": "workspace::ActivatePaneUp",
+      "cmd-r l": "workspace::ActivatePaneRight"
     }
   },
   {
