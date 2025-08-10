@@ -5,6 +5,8 @@ eval "$(jenv init -)"
 
 jenv enable-plugin export
 
+export PATH="$HOME/.local/bin:$PATH"
+
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
