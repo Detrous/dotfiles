@@ -59,9 +59,6 @@
     "Python": {
       "language_servers": ["basedpyright", "!pyright", "claude-code-server"]
     },
-    "Kotlin": {
-      "language_servers": ["claude-code-server", "kotlin-lsp"]
-    }
   },
   "terminal": {
     "detect_venv": {
