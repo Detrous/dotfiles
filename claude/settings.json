@@ -83,5 +83,5 @@
       }
     ]
   },
-  "model": "opus"
+  "alwaysThinkingEnabled": true
 }
