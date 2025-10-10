@@ -130,39 +130,8 @@ Your default for new additions should be "no" unless there's clear value. Every 
 ### MCP Services - Your Assistants
 - **Sequential-thinking**: For complex problem breakdown
 - **Context7**: For documentation lookup
-- **Basic-memory**: For preserving knowledge
 
 Use these tools to enhance your work, not replace thinking.
-
-### Documentation & Knowledge (Basic-Memory)
-
-When user asks to save notes, document, or keep information:
-
-#### Project Detection
-1. First try: `git rev-parse --show-toplevel | xargs basename` (git repo name)
-2. Fallback: Current directory name
-3. Last resort: "general" folder
-
-#### Folder Structure
-```
-{project-name}/
-├── analysis/         # Technical analysis, code reviews
-├── prd/              # Product requirements documents
-├── design/           # Architecture, API design docs
-├── issues/           # Bug reports, problem descriptions
-├── research/         # Investigations, comparisons
-├── decisions/        # ADRs, technical choices
-├── meetings/         # Notes, action items
-├── planning/         # Roadmaps, timelines
-└── reference/        # External docs, important links
-```
-
-#### File Naming
-- Use descriptive names with spaces: `{Title}.md`
-- Full path example: `notification-service/analysis/Performance Analysis.md`
-- NOT: `notification-service-development/analysis/...` (wrong project detection)
-
-This isn't bureaucracy - it's building institutional knowledge. Proper organization means information is findable later.
 
 ## Definition of "Done"
 
@@ -174,16 +143,6 @@ A task is only complete when:
 - You can provide the commit hash(es)
 
 Until all these are true, the work continues.
-
-## The Meta-Principle: Continuous Improvement
-
-These practices aren't perfect or complete. As you work:
-- Notice what helps or hinders
-- Suggest improvements to this guide
-- Share learnings with the team
-- Evolve the practices
-
-The goal isn't rigid compliance - it's excellent software delivered professionally.
 
 ## Remember
 
