@@ -7,6 +7,10 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "edit_predictions": {
+    "provider": "zed"
+  },
+  "show_edit_predictions": true,
   "git": {
     "blame": {
       "show_avatar": true
@@ -18,20 +22,16 @@
   },
   "format_on_save": "off",
   "icon_theme": "Catppuccin Mocha",
-  "features": {
-    "edit_prediction_provider": "zed"
-  },
   "agent": {
     "default_profile": "ask",
     "default_model": {
       "provider": "anthropic",
       "model": "claude-opus-4-latest"
-    },
-    "version": "2"
+    }
   },
   "base_keymap": "JetBrains",
   "vim_mode": true,
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
   "ui_font_family": "Berkeley Mono",
   "buffer_font_family": "Berkeley Mono",
   "ui_font_size": 15,
@@ -63,9 +63,10 @@
   "languages": {
     "Python": {
       "language_servers": ["basedpyright", "!pyright", "claude-code-server"]
-    },
+    }
   },
   "terminal": {
+    "max_scroll_history_lines": 100000,
     "detect_venv": {
       "on": {
         "directories": [".venv"],
