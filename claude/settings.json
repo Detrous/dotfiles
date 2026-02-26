@@ -1,12 +1,90 @@
 {
-  "env": {
-    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "64000",
-    "MAX_THINKING_TOKENS": "31999"
+  "alwaysThinkingEnabled" : true,
+  "enabledPlugins" : {
+    "frontend-design@claude-plugins-official" : true,
+    "playwright@claude-plugins-official" : true,
+    "rust-analyzer-lsp@claude-plugins-official" : true
   },
-  "permissions": {
-    "allow": [
-      "Bash(../gradlew test:*)",
-      "Bash(./gradlew:*)",
+  "env" : {
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL" : "claude-sonnet-4-5-20250929",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS" : "1",
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS" : "64000",
+    "MAX_THINKING_TOKENS" : "31999"
+  },
+  "hooks" : {
+    "Notification" : [
+      {
+        "hooks" : [
+          {
+            "command" : "\/Users\/detrous\/.claude\/ccnotifier-hook.sh",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "idle_prompt"
+      },
+      {
+        "hooks" : [
+          {
+            "command" : "\/Users\/detrous\/.claude\/ccnotifier-hook.sh",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "permission_prompt"
+      }
+    ],
+    "PreToolUse" : [
+      {
+        "hooks" : [
+          {
+            "command" : "\/Users\/detrous\/.claude\/ccnotifier-hook.sh",
+            "type" : "command"
+          }
+        ]
+      }
+    ],
+    "SessionEnd" : [
+      {
+        "hooks" : [
+          {
+            "command" : "\/Users\/detrous\/.claude\/ccnotifier-hook.sh",
+            "type" : "command"
+          }
+        ]
+      }
+    ],
+    "SessionStart" : [
+      {
+        "hooks" : [
+          {
+            "command" : "\/Users\/detrous\/.claude\/ccnotifier-hook.sh",
+            "type" : "command"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit" : [
+      {
+        "hooks" : [
+          {
+            "command" : "\/Users\/detrous\/.claude\/hooks\/pre-user-prompt-submit.py",
+            "type" : "command"
+          }
+        ]
+      },
+      {
+        "hooks" : [
+          {
+            "command" : "\/Users\/detrous\/.claude\/ccnotifier-hook.sh",
+            "type" : "command"
+          }
+        ]
+      }
+    ]
+  },
+  "permissions" : {
+    "allow" : [
+      "Bash(..\/gradlew test:*)",
+      "Bash(.\/gradlew:*)",
       "Bash(cargo:*)",
       "Bash(cat:*)",
       "Bash(cp:*)",
@@ -63,32 +141,9 @@
       "mcp__basic-memory__list_directory",
       "mcp__basic-memory__read_note"
     ],
-    "deny": []
-  },
-  "hooks": {
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/detrous/.claude/hooks/pre-user-prompt-submit.py"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "afplay /System/Library/Sounds/Glass.aiff"
-          }
-        ]
-      }
+    "deny" : [
+
     ]
   },
-  "alwaysThinkingEnabled": true,
-  "enabledPlugins": {
-    "claude-mem@thedotmack": true
-  }
+  "teammateMode" : "tmux"
 }
