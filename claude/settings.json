@@ -145,5 +145,9 @@
 
     ]
   },
-  "teammateMode" : "tmux"
+  "teammateMode" : "tmux",
+  "statusLine" : {
+    "type" : "command",
+    "command" : "claude-statusline"
+  }
 }
