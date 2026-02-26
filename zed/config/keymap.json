@@ -1,24 +1,47 @@
-// Zed keymap
-//
-// For information on binding keys, see the Zed
-// documentation: https://zed.dev/docs/key-bindings
-//
-// To see the default key bindings run `zed: open default keymap`
-// from the command palette.
 [
+  // Tasks
   {
-    "context": "Workspace",
-    "bindings": {
-      "cmd-r h": "workspace::ActivatePaneLeft",
-      "cmd-r j": "workspace::ActivatePaneDown",
-      "cmd-r k": "workspace::ActivatePaneUp",
-      "cmd-r l": "workspace::ActivatePaneRight"
-    }
+    "context": "Editor",
+      "bindings": {
+        "ctrl-t f": ["task::Spawn", { "task_name": "test: $ZED_STEM" }]
+      }
   },
   {
     "context": "Editor",
+      "bindings": {
+        "ctrl-t d": ["task::Spawn", { "task_name": "test: $ZED_RELATIVE_DIR" }]
+      }
+  },
+  // Keymaps
+  {
+    "context": "Terminal",
     "bindings": {
-      // "j k": ["workspace::SendKeystrokes", "escape"]
+      "shift-enter": [
+        "terminal::SendText",
+        "\u001b\r"
+      ]
+    }
+  },
+  {
+    "bindings": {
+      "ctrl-v space": "terminal_panel::ToggleFocus"
+    }
+  },
+  {
+    "bindings": {
+      "cmd-shift-k": "workspace::ActivatePaneUp"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "shift-up": null
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "shift-down": null
     }
   }
 ]
