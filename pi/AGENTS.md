@@ -24,4 +24,4 @@
 - Keep commits atomic and messages short.
 - Never commit when tests or linters are failing.
 - Run the formatter before commit when the project uses one.
-- If a task requires interacting with GitHub, prefer the `gh` CLI when available.
+- Always use  `gh` to access github instead of `curl`/`wget`
