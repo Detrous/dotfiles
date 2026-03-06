@@ -10,6 +10,7 @@ This is a personal dotfiles repository for managing configuration files across d
   - Removes existing symlinks/files before creating new ones
   - Links Claude configuration from `claude/` to `~/.claude/`
   - Links Zed editor configuration from `zed/config/` to `~/.config/zed/`
+  - Links Pi extensions directory from `pi/extensions/` to `~/.pi/agent/extensions/` (dotfiles is source of truth)
 
 ## Repository Structure
 ```
@@ -25,6 +26,9 @@ dotfiles/
 │   │   └── update-claude-md.md  # Update project CLAUDE.md files
 │   └── hooks/        # Pre/post action hooks
 │       └── pre-user-prompt-submit.py  # Hook executed before user prompts
+├── pi/               # Pi coding agent configuration
+│   └── extensions/   # TypeScript extensions (symlinked to ~/.pi/agent/extensions/)
+│       └── ask-user.ts  # Interactive TUI question tool for the LLM
 ├── zed/              # Zed editor files
 │   ├── config/       # Zed configuration
 │   │   ├── keymap.json
@@ -53,12 +57,14 @@ dotfiles/
 Use prefixes to indicate which component is being modified:
 - `Zed:` - Changes to Zed editor configuration or plugins
 - `Claude:` - Changes to Claude configuration, commands, or hooks
+- `Pi:` - Changes to Pi agent extensions or configuration
 - `Setup:` - Changes to setup scripts or installation process
 - `Docs:` - Documentation updates
 
 Examples:
 - `Zed: Enable claude-code-server for Kotlin files`
 - `Claude: Add new command for project analysis`
+- `Pi: Add ask_user interactive question tool`
 - `Setup: Fix symlink creation for nested directories`
 
 ## Important Notes

@@ -30,6 +30,12 @@ rm -f "$HOME/.zprofile"
 ln -s "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
 ln -s "$DOTFILES_DIR/zsh/.zprofile" "$HOME/.zprofile"
 
+# Pi agent extensions (dotfiles is source of truth for ~/.pi/agent/extensions/)
+mkdir -p "$HOME/.pi/agent"
+rm -rf "$HOME/.pi/agent/extensions"
+ln -s "$DOTFILES_DIR/pi/extensions" "$HOME/.pi/agent/extensions"
+
 echo "Claude config linked"
 echo "Zed config linked"
 echo "Zsh config linked"
+echo "Pi extensions linked"
