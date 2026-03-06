@@ -11,6 +11,7 @@ This is a personal dotfiles repository for managing configuration files across d
   - Links Claude configuration from `claude/` to `~/.claude/`
   - Links Zed editor configuration from `zed/config/` to `~/.config/zed/`
   - Links Pi extensions directory from `pi/extensions/` to `~/.pi/agent/extensions/` (dotfiles is source of truth)
+  - Links Pi global context from `pi/AGENTS.md` to `~/.pi/agent/AGENTS.md`
 
 ## Repository Structure
 ```
@@ -27,6 +28,7 @@ dotfiles/
 │   └── hooks/        # Pre/post action hooks
 │       └── pre-user-prompt-submit.py  # Hook executed before user prompts
 ├── pi/               # Pi coding agent configuration
+│   ├── AGENTS.md     # Global agent guidelines (symlinked to ~/.pi/agent/AGENTS.md)
 │   └── extensions/   # TypeScript extensions (symlinked to ~/.pi/agent/extensions/)
 │       └── ask-user.ts  # Interactive TUI question tool for the LLM
 ├── zed/              # Zed editor files
