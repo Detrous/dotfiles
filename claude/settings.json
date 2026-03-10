@@ -1,90 +1,14 @@
 {
-  "alwaysThinkingEnabled" : true,
-  "enabledPlugins" : {
-    "frontend-design@claude-plugins-official" : true,
-    "playwright@claude-plugins-official" : true,
-    "rust-analyzer-lsp@claude-plugins-official" : true
+  "env": {
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-sonnet-4-6",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "64000",
+    "MAX_THINKING_TOKENS": "31999"
   },
-  "env" : {
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL" : "claude-sonnet-4-6",
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS" : "1",
-    "CLAUDE_CODE_MAX_OUTPUT_TOKENS" : "64000",
-    "MAX_THINKING_TOKENS" : "31999"
-  },
-  "hooks" : {
-    "Notification" : [
-      {
-        "hooks" : [
-          {
-            "command" : "\/Users\/detrous\/.claude\/ccnotifier-hook.sh",
-            "type" : "command"
-          }
-        ],
-        "matcher" : "idle_prompt"
-      },
-      {
-        "hooks" : [
-          {
-            "command" : "\/Users\/detrous\/.claude\/ccnotifier-hook.sh",
-            "type" : "command"
-          }
-        ],
-        "matcher" : "permission_prompt"
-      }
-    ],
-    "PreToolUse" : [
-      {
-        "hooks" : [
-          {
-            "command" : "\/Users\/detrous\/.claude\/ccnotifier-hook.sh",
-            "type" : "command"
-          }
-        ]
-      }
-    ],
-    "SessionEnd" : [
-      {
-        "hooks" : [
-          {
-            "command" : "\/Users\/detrous\/.claude\/ccnotifier-hook.sh",
-            "type" : "command"
-          }
-        ]
-      }
-    ],
-    "SessionStart" : [
-      {
-        "hooks" : [
-          {
-            "command" : "\/Users\/detrous\/.claude\/ccnotifier-hook.sh",
-            "type" : "command"
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit" : [
-      {
-        "hooks" : [
-          {
-            "command" : "\/Users\/detrous\/.claude\/hooks\/pre-user-prompt-submit.py",
-            "type" : "command"
-          }
-        ]
-      },
-      {
-        "hooks" : [
-          {
-            "command" : "\/Users\/detrous\/.claude\/ccnotifier-hook.sh",
-            "type" : "command"
-          }
-        ]
-      }
-    ]
-  },
-  "permissions" : {
-    "allow" : [
-      "Bash(..\/gradlew test:*)",
-      "Bash(.\/gradlew:*)",
+  "permissions": {
+    "allow": [
+      "Bash(../gradlew test:*)",
+      "Bash(./gradlew:*)",
       "Bash(cargo:*)",
       "Bash(cat:*)",
       "Bash(cp:*)",
@@ -104,7 +28,6 @@
       "Bash(git checkout:*)",
       "Bash(git commit:*)",
       "Bash(git fetch:*)",
-      "Bash(git push:*)",
       "Bash(git reset:*)",
       "Bash(git restore:*)",
       "Bash(git stash:*)",
@@ -141,13 +64,89 @@
       "mcp__basic-memory__list_directory",
       "mcp__basic-memory__read_note"
     ],
-    "deny" : [
-
+    "deny": []
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "idle_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/detrous/.claude/ccnotifier-hook.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "permission_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/detrous/.claude/ccnotifier-hook.sh"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/detrous/.claude/ccnotifier-hook.sh"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/detrous/.claude/ccnotifier-hook.sh"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/detrous/.claude/ccnotifier-hook.sh"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/detrous/.claude/hooks/pre-user-prompt-submit.py"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/detrous/.claude/ccnotifier-hook.sh"
+          }
+        ]
+      }
     ]
   },
-  "teammateMode" : "tmux",
-  "statusLine" : {
-    "type" : "command",
-    "command" : "claude-statusline"
-  }
+  "statusLine": {
+    "type": "command",
+    "command": "claude-statusline"
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true
+  },
+  "alwaysThinkingEnabled": true,
+  "teammateMode": "tmux",
+  "effortLevel": "high"
 }
