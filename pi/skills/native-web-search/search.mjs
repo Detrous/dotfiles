@@ -159,7 +159,7 @@ function findPiExecutable() {
 	return first || undefined;
 }
 
-function collectModuleCandidates() {
+function collectModuleCandidates(entry = "index.js") {
 	const candidates = new Set();
 
 	const add = (p) => {
@@ -168,16 +168,16 @@ function collectModuleCandidates() {
 		candidates.add(abs);
 	};
 
-	if (process.env.PI_AI_MODULE_PATH) add(process.env.PI_AI_MODULE_PATH);
+	if (process.env.PI_AI_MODULE_PATH) add(process.env.PI_AI_MODULE_PATH.replace(/index\.js$/, entry));
 
 	const cwd = process.cwd();
 	const scriptDir = dirname(fileURLToPath(import.meta.url));
 	for (const start of [cwd, scriptDir]) {
 		let dir = start;
 		for (let i = 0; i < 8; i++) {
-			add(join(dir, "node_modules", "@mariozechner", "pi-ai", "dist", "index.js"));
-			add(join(dir, "packages", "ai", "dist", "index.js"));
-			add(join(dir, "ai", "dist", "index.js"));
+			add(join(dir, "node_modules", "@mariozechner", "pi-ai", "dist", entry));
+			add(join(dir, "packages", "ai", "dist", entry));
+			add(join(dir, "ai", "dist", entry));
 			const parent = dirname(dir);
 			if (parent === dir) break;
 			dir = parent;
@@ -189,41 +189,51 @@ function collectModuleCandidates() {
 		try {
 			const piReal = realpathSync(piExec);
 			const piDir = dirname(piReal);
-			add(join(piDir, "..", "..", "ai", "dist", "index.js"));
-			add(join(piDir, "..", "..", "pi-ai", "dist", "index.js"));
-			add(join(piDir, "..", "node_modules", "@mariozechner", "pi-ai", "dist", "index.js"));
-			add(join(piDir, "..", "..", "node_modules", "@mariozechner", "pi-ai", "dist", "index.js"));
+			add(join(piDir, "..", "..", "ai", "dist", entry));
+			add(join(piDir, "..", "..", "pi-ai", "dist", entry));
+			add(join(piDir, "..", "node_modules", "@mariozechner", "pi-ai", "dist", entry));
+			add(join(piDir, "..", "..", "node_modules", "@mariozechner", "pi-ai", "dist", entry));
 		} catch {
 			// ignore
 		}
 	}
 
-	add(join(homedir(), "Development", "pi-mono", "packages", "ai", "dist", "index.js"));
+	add(join(homedir(), "Development", "pi-mono", "packages", "ai", "dist", entry));
 
 	return Array.from(candidates);
 }
 
-async function loadPiAi() {
+async function importPiAiModule(specifier, entry) {
 	const tried = [];
 
 	try {
-		return await import("@mariozechner/pi-ai");
+		return { module: await import(specifier), tried };
 	} catch (err) {
-		tried.push(`@mariozechner/pi-ai (${err?.code || err?.message || "not found"})`);
+		tried.push(`${specifier} (${err?.code || err?.message || "not found"})`);
 	}
 
-	for (const candidate of collectModuleCandidates()) {
+	for (const candidate of collectModuleCandidates(entry)) {
 		if (!existsSync(candidate)) continue;
 		try {
-			return await import(pathToFileURL(candidate).href);
+			return { module: await import(pathToFileURL(candidate).href), tried };
 		} catch (err) {
 			tried.push(`${candidate} (${err?.code || err?.message || "failed"})`);
 		}
 	}
 
-	throw new Error(
-		`Could not load @mariozechner/pi-ai. Set PI_AI_MODULE_PATH to its dist/index.js.\nTried:\n- ${tried.join("\n- ")}`,
-	);
+	return { module: undefined, tried };
+}
+
+async function loadPiAi() {
+	const core = await importPiAiModule("@mariozechner/pi-ai", "index.js");
+	if (!core.module) {
+		throw new Error(
+			`Could not load @mariozechner/pi-ai. Set PI_AI_MODULE_PATH to its dist/index.js.\nTried:\n- ${core.tried.join("\n- ")}`,
+		);
+	}
+
+	const oauth = await importPiAiModule("@mariozechner/pi-ai/oauth", "oauth.js");
+	return { ...core.module, ...(oauth.module || {}) };
 }
 
 function pickFastModel(provider, requestedModel, piAi) {
