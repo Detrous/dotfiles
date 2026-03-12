@@ -12,6 +12,7 @@ This is a personal dotfiles repository for managing configuration files across d
   - Links Zed editor configuration from `zed/config/` to `~/.config/zed/`
   - Links Pi extensions directory from `pi/extensions/` to `~/.pi/agent/extensions/` (dotfiles is source of truth)
   - Links Pi skills directory from `pi/skills/` to `~/.pi/agent/skills/` (dotfiles is source of truth)
+  - Links Pi prompts directory from `pi/prompts/` to `~/.pi/agent/prompts/` (dotfiles is source of truth)
   - Links Pi global context from `pi/AGENTS.md` to `~/.pi/agent/AGENTS.md`
 
 ## Repository Structure
@@ -32,6 +33,8 @@ dotfiles/
 │   ├── AGENTS.md     # Global agent guidelines (symlinked to ~/.pi/agent/AGENTS.md)
 │   ├── extensions/   # TypeScript extensions (symlinked to ~/.pi/agent/extensions/)
 │   │   └── ask-user.ts  # Interactive TUI question tool for the LLM
+│   ├── prompts/      # Pi prompt templates (symlinked to ~/.pi/agent/prompts/)
+│   │   └── save-plan.md  # Plan-saving prompt template
 │   └── skills/       # Pi skills (symlinked to ~/.pi/agent/skills/)
 │       └── github-fetch/  # Use gh CLI to read GitHub repos, PRs, issues, runs, releases
 ├── zed/              # Zed editor files

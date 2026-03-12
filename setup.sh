@@ -30,13 +30,15 @@ rm -f "$HOME/.zprofile"
 ln -s "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
 ln -s "$DOTFILES_DIR/zsh/.zprofile" "$HOME/.zprofile"
 
-# Pi agent extensions, skills, and global context (dotfiles is source of truth)
+# Pi agent extensions, skills, prompts, and global context (dotfiles is source of truth)
 mkdir -p "$HOME/.pi/agent"
 rm -rf "$HOME/.pi/agent/extensions"
 rm -rf "$HOME/.pi/agent/skills"
+rm -rf "$HOME/.pi/agent/prompts"
 rm -f "$HOME/.pi/agent/AGENTS.md"
 ln -s "$DOTFILES_DIR/pi/extensions" "$HOME/.pi/agent/extensions"
 ln -s "$DOTFILES_DIR/pi/skills" "$HOME/.pi/agent/skills"
+ln -s "$DOTFILES_DIR/pi/prompts" "$HOME/.pi/agent/prompts"
 ln -s "$DOTFILES_DIR/pi/AGENTS.md" "$HOME/.pi/agent/AGENTS.md"
 
 echo "Claude config linked"
@@ -44,4 +46,5 @@ echo "Zed config linked"
 echo "Zsh config linked"
 echo "Pi extensions linked"
 echo "Pi skills linked"
+echo "Pi prompts linked"
 echo "Pi AGENTS.md linked"
