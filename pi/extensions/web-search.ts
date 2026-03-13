@@ -202,7 +202,7 @@ export default function webSearchExtension(pi: ExtensionAPI) {
 		promptSnippet: "Search the web for current sources, docs, articles, or pages",
 		promptGuidelines: [
 			"Use web_search when you need current or live web information that may not be in your training data.",
-			"Use web_search to find candidate sources — then use read or other tools to inspect specific pages if needed.",
+			"Use web_search to find candidate sources — then use web_extract to inspect a specific page in detail.",
 			"Do not use shell commands (curl, wget, python requests) for web fetching when web_search is available.",
 			"Keep queries concise and specific for best results.",
 		],
