@@ -8,7 +8,7 @@ This is a personal dotfiles repository for managing configuration files across d
 ## Setup and Installation
 - **Main setup command**: `./setup.sh` - Creates symlinks for all configuration files
   - Removes existing symlinks/files before creating new ones
-  - Links Claude configuration from `claude/` to `~/.claude/`
+  - Links Claude configuration from `claude/` to `~/.claude/` (including skills)
   - Links Zed editor configuration from `zed/config/` to `~/.config/zed/`
   - Links Pi extensions directory from `pi/extensions/` to `~/.pi/agent/extensions/` (dotfiles is source of truth)
   - Links Pi skills directory from `pi/skills/` to `~/.pi/agent/skills/` (dotfiles is source of truth)
@@ -27,8 +27,9 @@ dotfiles/
 │   │   ├── run.md            # Structured task execution command
 │   │   ├── sync-settings.md  # Sync local permissions to global settings
 │   │   └── update-claude-md.md  # Update project CLAUDE.md files
-│   └── hooks/        # Pre/post action hooks
-│       └── pre-user-prompt-submit.py  # Hook executed before user prompts
+│   ├── hooks/        # Pre/post action hooks
+│   │   └── pre-user-prompt-submit.py  # Hook executed before user prompts
+│   └── skills/       # Claude Code skills (symlinked to ~/.claude/skills/)
 ├── pi/               # Pi coding agent configuration
 │   ├── AGENTS.md     # Global agent guidelines (symlinked to ~/.pi/agent/AGENTS.md)
 │   ├── extensions/   # TypeScript extensions (symlinked to ~/.pi/agent/extensions/)
