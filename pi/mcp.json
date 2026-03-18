@@ -4,6 +4,11 @@
       "url": "http://127.0.0.1:8089/mcp",
       "lifecycle": "lazy",
       "directTools": true
+    },
+    "figma": {
+      "url": "http://127.0.0.1:3845/mcp",
+      "lifecycle": "lazy",
+      "directTools": true
     }
   }
 }
