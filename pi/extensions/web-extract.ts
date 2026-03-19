@@ -5,7 +5,7 @@
  * Reads credentials from ~/.pi/agent/web-tools.json
  *
  * Returns clean readable page content for a given URL.
- * Supports optional goal-focused extraction via the focus parameter.
+ * Supports optional focus-driven excerpt extraction via the focus parameter.
  */
 
 import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
@@ -28,7 +28,11 @@ const CONFIG_PATH = join(homedir(), ".pi", "agent", "web-tools.json");
 const TAVILY_EXTRACT_URL = "https://api.tavily.com/extract";
 const DEFAULT_FORMAT = "markdown";
 const DEFAULT_DEPTH = "basic";
-const FOCUSED_CHUNKS_PER_SOURCE = 3;
+const DEFAULT_FOCUSED_CHUNKS_PER_SOURCE = 3;
+const MIN_CHUNKS_PER_SOURCE = 1;
+const MAX_CHUNKS_PER_SOURCE = 5;
+const MIN_TIMEOUT_SECONDS = 1;
+const MAX_TIMEOUT_SECONDS = 60;
 
 // ── types ─────────────────────────────────────────────────────────────────────
 
@@ -57,7 +61,10 @@ interface ExtractDetails {
 	mode: "full" | "focused";
 	format: "markdown" | "text";
 	depth: "basic" | "advanced";
+	chunks_per_source: number | null;
+	timeout: number | null;
 	response_time: number | null;
+	request_id: string | null;
 	content_length: number;
 	truncated: boolean;
 	full_output_path: string | null;
@@ -145,6 +152,10 @@ function extractDomain(url: string): string {
 	}
 }
 
+function normalizeExtractedContent(rawContent: string): string {
+	return rawContent.replace(/\r\n/g, "\n").replace(/\n{3,}/g, "\n\n").trim();
+}
+
 // ── tavily request ────────────────────────────────────────────────────────────
 
 async function extractTavily(
@@ -154,6 +165,8 @@ async function extractTavily(
 		format: "markdown" | "text";
 		depth: "basic" | "advanced";
 		focus?: string;
+		chunks_per_source?: number;
+		timeout?: number;
 	},
 	signal?: AbortSignal,
 ): Promise<TavilyExtractResponse> {
@@ -166,7 +179,10 @@ async function extractTavily(
 
 	if (options.focus) {
 		body.query = options.focus;
-		body.chunks_per_source = FOCUSED_CHUNKS_PER_SOURCE;
+		body.chunks_per_source = options.chunks_per_source ?? DEFAULT_FOCUSED_CHUNKS_PER_SOURCE;
+	}
+	if (typeof options.timeout === "number") {
+		body.timeout = options.timeout;
 	}
 
 	const response = await fetch(TAVILY_EXTRACT_URL, {
@@ -202,13 +218,14 @@ export default function webExtractExtension(pi: ExtensionAPI) {
 		description:
 			"Extract clean readable content from a single web page. Returns the page body as markdown or text. " +
 			"Use after web_search to inspect a specific URL in detail. " +
-			"Optionally provide a focus to extract only the most relevant sections. " +
+			"Optionally provide a focus to return the most relevant excerpts/chunks for a specific goal. " +
 			`Output is truncated to ${DEFAULT_MAX_LINES} lines or ${formatSize(DEFAULT_MAX_BYTES)}; full content is saved to a temp file when truncated.`,
 		promptSnippet: "Extract readable content from a single web page URL",
 		promptGuidelines: [
 			"Use web_extract to read the content of a specific web page URL.",
 			"Use web_search first to find candidate URLs, then web_extract to inspect the best one.",
-			"Provide a focus when you only need specific information from a page (e.g. 'breaking changes', 'installation steps').",
+			"Provide focus when you want the most relevant excerpts for a specific question; focus mode returns chunks/snippets rather than a guaranteed full-page rewrite.",
+			"Increase timeout for slow or JavaScript-heavy pages when extraction is incomplete.",
 			"Do not use shell commands (curl, wget, python requests) for web page fetching — use web_extract instead.",
 		],
 		parameters: Type.Object({
@@ -216,7 +233,15 @@ export default function webExtractExtension(pi: ExtensionAPI) {
 			focus: Type.Optional(
 				Type.String({
 					description:
-						"What to extract from the page — enables targeted extraction of relevant sections only (e.g. 'rate limits', 'installation steps')",
+						"Optional relevance prompt for excerpt mode — reranks and returns the most relevant chunks/snippets from the page rather than the full page (e.g. 'rate limits', 'installation steps')",
+				}),
+			),
+			chunks_per_source: Type.Optional(
+				Type.Integer({
+					minimum: MIN_CHUNKS_PER_SOURCE,
+					maximum: MAX_CHUNKS_PER_SOURCE,
+					description:
+						"When focus is provided, return up to this many relevant chunks/snippets (default 3, min 1, max 5). Requires focus.",
 				}),
 			),
 			format: Type.Optional(
@@ -229,6 +254,14 @@ export default function webExtractExtension(pi: ExtensionAPI) {
 					description: "Extraction depth — use advanced for dynamic or complex pages (default basic)",
 				}),
 			),
+			timeout: Type.Optional(
+				Type.Number({
+					minimum: MIN_TIMEOUT_SECONDS,
+					maximum: MAX_TIMEOUT_SECONDS,
+					description:
+						"Maximum time in seconds to wait before timing out (default depends on depth: Tavily uses 10s for basic and 30s for advanced when omitted)",
+				}),
+			),
 		}),
 
 		async execute(_toolCallId, params, signal) {
@@ -239,8 +272,36 @@ export default function webExtractExtension(pi: ExtensionAPI) {
 			const format = (params.format ?? DEFAULT_FORMAT) as "markdown" | "text";
 			const depth = (params.depth ?? DEFAULT_DEPTH) as "basic" | "advanced";
 			const focus = params.focus?.trim() || undefined;
+			const timeout = params.timeout;
+			const requestedChunksPerSource = params.chunks_per_source;
 
-			const tavilyResponse = await extractTavily(apiKey, url, { format, depth, focus }, signal);
+			if (typeof timeout === "number" && (timeout < MIN_TIMEOUT_SECONDS || timeout > MAX_TIMEOUT_SECONDS)) {
+				throw new Error(`timeout must be between ${MIN_TIMEOUT_SECONDS} and ${MAX_TIMEOUT_SECONDS} seconds`);
+			}
+
+			if (requestedChunksPerSource !== undefined && !focus) {
+				throw new Error("chunks_per_source requires focus");
+			}
+
+			if (
+				typeof requestedChunksPerSource === "number" &&
+				(!Number.isInteger(requestedChunksPerSource) ||
+					requestedChunksPerSource < MIN_CHUNKS_PER_SOURCE ||
+					requestedChunksPerSource > MAX_CHUNKS_PER_SOURCE)
+			) {
+				throw new Error(`chunks_per_source must be an integer between ${MIN_CHUNKS_PER_SOURCE} and ${MAX_CHUNKS_PER_SOURCE}`);
+			}
+
+			const chunksPerSource = focus
+				? (requestedChunksPerSource ?? DEFAULT_FOCUSED_CHUNKS_PER_SOURCE)
+				: undefined;
+
+			const tavilyResponse = await extractTavily(
+				apiKey,
+				url,
+				{ format, depth, focus, chunks_per_source: chunksPerSource, timeout },
+				signal,
+			);
 
 			const failed = tavilyResponse.failed_results ?? [];
 			const results = tavilyResponse.results ?? [];
@@ -251,10 +312,18 @@ export default function webExtractExtension(pi: ExtensionAPI) {
 			}
 
 			const result = results[0];
-			const rawContent = result.raw_content || "";
+			const rawContent = normalizeExtractedContent(result.raw_content || "");
 			const domain = extractDomain(url);
 
-			const header = `Source: ${url}\nDomain: ${domain}`;
+			const headerLines = [`Source: ${url}`, `Domain: ${domain}`, `Mode: ${focus ? "focused excerpts" : "full page"}`];
+			if (focus) {
+				headerLines.push(`Focus: ${focus}`);
+				headerLines.push(`Chunks per source: ${chunksPerSource}`);
+			}
+			if (typeof timeout === "number") {
+				headerLines.push(`Timeout: ${timeout}s`);
+			}
+			const header = headerLines.join("\n");
 			const fullOutput = `${header}\n\n${rawContent}`;
 
 			const truncation = truncateHead(fullOutput, {
@@ -285,7 +354,10 @@ export default function webExtractExtension(pi: ExtensionAPI) {
 					mode: focus ? "focused" : "full",
 					format,
 					depth,
+					chunks_per_source: chunksPerSource ?? null,
+					timeout: timeout ?? null,
 					response_time: tavilyResponse.response_time ?? null,
+					request_id: tavilyResponse.request_id ?? null,
 					content_length: rawContent.length,
 					truncated: truncation.truncated,
 					full_output_path: fullOutputPath,
@@ -303,7 +375,9 @@ export default function webExtractExtension(pi: ExtensionAPI) {
 			const parts: string[] = [];
 			if (args.format) parts.push(args.format as string);
 			if (args.depth) parts.push(args.depth as string);
+			if (args.timeout) parts.push(`timeout ${args.timeout}s`);
 			if (args.focus) parts.push(`focus: "${args.focus}"`);
+			if (args.chunks_per_source) parts.push(`chunks ${args.chunks_per_source}`);
 			if (parts.length) {
 				text += " " + theme.fg("dim", parts.join(" · "));
 			}
@@ -331,7 +405,10 @@ export default function webExtractExtension(pi: ExtensionAPI) {
 			let text = theme.fg("success", "✓ ") + theme.fg("text", domain);
 			text += theme.fg("dim", ` · ${formatSize(details.content_length)}`);
 			if (details.mode === "focused") {
-				text += theme.fg("muted", " · focused");
+				text += theme.fg("muted", " · focused excerpts");
+				if (details.chunks_per_source !== null) {
+					text += theme.fg("muted", ` · ${details.chunks_per_source} chunks`);
+				}
 			}
 			if (details.truncated) {
 				text += theme.fg("warning", " · truncated");
@@ -339,6 +416,12 @@ export default function webExtractExtension(pi: ExtensionAPI) {
 
 			if (expanded) {
 				text += "\n" + theme.fg("dim", details.url);
+				if (details.focus) {
+					text += "\n" + theme.fg("dim", `Focus: ${details.focus}`);
+				}
+				if (details.timeout !== null) {
+					text += "\n" + theme.fg("dim", `Timeout: ${details.timeout}s`);
+				}
 				if (details.full_output_path) {
 					text += "\n" + theme.fg("dim", `Full output: ${details.full_output_path}`);
 				}
