@@ -32,6 +32,12 @@ rm -f "$HOME/.zprofile"
 ln -s "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
 ln -s "$DOTFILES_DIR/zsh/.zprofile" "$HOME/.zprofile"
 
+# Gradle config
+mkdir -p "$HOME/.gradle"
+rm -f "$HOME/.gradle/export-workspace.gradle.kts"
+
+ln -s "$DOTFILES_DIR/gradle/export-workspace.gradle.kts" "$HOME/.gradle/export-workspace.gradle.kts"
+
 # Pi agent extensions, skills, prompts, settings, MCP config, and global context (dotfiles is source of truth)
 mkdir -p "$HOME/.pi/agent"
 rm -rf "$HOME/.pi/agent/extensions"
@@ -50,6 +56,7 @@ ln -s "$DOTFILES_DIR/pi/mcp.json" "$HOME/.pi/agent/mcp.json"
 echo "Claude config linked"
 echo "Zed config linked"
 echo "Zsh config linked"
+echo "Gradle export-workspace.gradle.kts linked"
 echo "Pi extensions linked"
 echo "Pi skills linked"
 echo "Pi prompts linked"
