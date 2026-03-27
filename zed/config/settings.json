@@ -74,8 +74,7 @@
       }
     },
     "env": {
-      "VIRTUAL_ENV": ".venv",
-      "PATH": ".venv/bin:$PATH"
+      "VIRTUAL_ENV": ".venv"
     }
   },
   "file_types": {
