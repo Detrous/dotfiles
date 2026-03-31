@@ -351,7 +351,9 @@ export default function askUserExtension(pi: ExtensionAPI) {
 						}
 					} else if (q) {
 						// ── Question tab ───────────────────────────────────────────
-						add(theme.fg("text", ` ${q.prompt}`));
+						for (const promptLine of wrapPlainText(q.prompt, Math.max(1, width - 1))) {
+							add(theme.fg("text", ` ${promptLine}`));
+						}
 						lines.push("");
 
 						for (let i = 0; i < opts.length; i++) {
@@ -451,4 +453,43 @@ export default function askUserExtension(pi: ExtensionAPI) {
 
 function shorten(s: string, max: number): string {
 	return s.length <= max ? s : `${s.slice(0, max - 1)}…`;
+}
+
+function wrapPlainText(text: string, maxWidth: number): string[] {
+	if (maxWidth <= 0) return [text];
+
+	const lines: string[] = [];
+	for (const rawLine of text.split(/\r?\n/)) {
+		const words = rawLine.split(/\s+/).filter(Boolean);
+		if (words.length === 0) {
+			lines.push("");
+			continue;
+		}
+
+		let current = "";
+		for (const word of words) {
+			if (word.length > maxWidth) {
+				if (current) {
+					lines.push(current);
+					current = "";
+				}
+				for (let i = 0; i < word.length; i += maxWidth) {
+					lines.push(word.slice(i, i + maxWidth));
+				}
+				continue;
+			}
+
+			const next = current ? `${current} ${word}` : word;
+			if (next.length <= maxWidth) {
+				current = next;
+			} else {
+				lines.push(current);
+				current = word;
+			}
+		}
+
+		if (current) lines.push(current);
+	}
+
+	return lines.length > 0 ? lines : [""];
 }
