@@ -82,6 +82,7 @@
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
   "skipDangerousModePermissionPrompt": true,
+  "theme": "dark",
   "teammateMode": "tmux",
   "skipAutoPermissionPrompt": true
 }
