@@ -6,6 +6,7 @@
 - Don't add comments, docstrings, or type annotations unless asked
 - DO NOT make any assumption, always ask for clarification if uncertain
 - ALWAYS use sequential thinking to make plan, research issue or before proposing final solution. This is your main tool to not be stupid!
+- ALWAYS check for relevant skills for your task
 
 ## Commit Conventions
 - IMPORTANT: NEVER commit if tests or linters fail - verify green first

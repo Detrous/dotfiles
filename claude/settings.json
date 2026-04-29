@@ -64,10 +64,10 @@
       "mcp__basic-memory__list_directory",
       "mcp__basic-memory__read_note"
     ],
-    "deny": []
+    "deny": [],
+    "defaultMode": "auto"
   },
-  "hooks": {
-  },
+  "hooks": {},
   "statusLine": {
     "type": "command",
     "command": "claude-statusline"
@@ -82,5 +82,6 @@
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
   "skipDangerousModePermissionPrompt": true,
-  "teammateMode": "tmux"
+  "teammateMode": "tmux",
+  "skipAutoPermissionPrompt": true
 }
