@@ -9,6 +9,7 @@ This is a personal dotfiles repository for managing configuration files across d
 - **Main setup command**: `./setup.sh` - Creates symlinks for all configuration files
   - Removes existing symlinks/files before creating new ones
   - Links Claude configuration from `claude/` to `~/.claude/` (including skills)
+  - Links Neovim (LazyVim) configuration from `nvim/` to `~/.config/nvim/`
   - Links Zed editor configuration from `zed/config/` to `~/.config/zed/`
   - Links Pi extensions directory from `pi/extensions/` to `~/.pi/agent/extensions/` (dotfiles is source of truth)
   - Links Pi skills directory from `pi/skills/` to `~/.pi/agent/skills/` (dotfiles is source of truth)
@@ -38,6 +39,13 @@ dotfiles/
 │   │   └── save-plan.md  # Plan-saving prompt template
 │   └── skills/       # Pi skills (symlinked to ~/.pi/agent/skills/)
 │       └── github-fetch/  # Use gh CLI to read GitHub repos, PRs, issues, runs, releases
+├── nvim/             # Neovim configuration (LazyVim starter, symlinked to ~/.config/nvim/)
+│   ├── init.lua      # Entry point — bootstraps lazy.nvim + LazyVim
+│   ├── lazyvim.json  # Selected LazyVim Extras (lang.rust, lang.typescript, lang.kotlin, etc.)
+│   ├── lazy-lock.json  # Pinned plugin versions for reproducible installs
+│   └── lua/
+│       ├── config/   # Core config (autocmds, keymaps, options, lazy.lua)
+│       └── plugins/  # Custom plugin specs (starter ships example.lua)
 ├── zed/              # Zed editor files
 │   ├── config/       # Zed configuration
 │   │   ├── keymap.json
@@ -65,6 +73,7 @@ dotfiles/
 ## Commit Message Conventions
 Use prefixes to indicate which component is being modified:
 - `Zed:` - Changes to Zed editor configuration or plugins
+- `Nvim:` - Changes to Neovim / LazyVim configuration
 - `Claude:` - Changes to Claude configuration, commands, or hooks
 - `Pi:` - Changes to Pi agent extensions or configuration
 - `Setup:` - Changes to setup scripts or installation process
