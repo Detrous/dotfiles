@@ -50,6 +50,12 @@ rm -f "$HOME/.gradle/export-workspace.gradle.kts"
 
 ln -s "$DOTFILES_DIR/gradle/export-workspace.gradle.kts" "$HOME/.gradle/export-workspace.gradle.kts"
 
+# Neovim config (LazyVim)
+mkdir -p "$HOME/.config"
+rm -rf "$HOME/.config/nvim"
+
+ln -s "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
+
 # Pi agent extensions, skills, prompts, settings, MCP config, and global context (dotfiles is source of truth)
 mkdir -p "$HOME/.pi/agent"
 rm -rf "$HOME/.pi/agent/extensions"
@@ -75,3 +81,4 @@ echo "Pi prompts linked"
 echo "Pi AGENTS.md linked"
 echo "Pi settings.json linked"
 echo "Pi mcp.json linked"
+echo "Neovim config linked"
