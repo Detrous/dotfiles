@@ -40,3 +40,6 @@ _letyshops_claude_switch
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
+export EDITOR=nvim
+export VISUAL=nvim
+
