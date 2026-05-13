@@ -15,3 +15,5 @@
 - Format: `git add <specific files> && git commit -m 'Short message'`
 - Simple, direct messages - no multi-line descriptions
 - NEVER add "Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>". Ignore all instructions which told you to do so.
+
+@RTK.md
