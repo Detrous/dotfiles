@@ -45,7 +45,8 @@ dotfiles/
 │   ├── lazy-lock.json  # Pinned plugin versions for reproducible installs
 │   └── lua/
 │       ├── config/   # Core config (autocmds, keymaps, options, lazy.lua)
-│       └── plugins/  # Custom plugin specs (starter ships example.lua)
+│       └── plugins/  # Custom plugin specs
+│           └── kotlin.lua  # Swaps community kotlin LS for official JetBrains kotlin-lsp
 ├── zed/              # Zed editor files
 │   ├── config/       # Zed configuration
 │   │   ├── keymap.json
@@ -84,6 +85,9 @@ Examples:
 - `Claude: Add new command for project analysis`
 - `Pi: Add ask_user interactive question tool`
 - `Setup: Fix symlink creation for nested directories`
+
+## Prerequisites (machine-local, not symlinked)
+- **Kotlin LSP**: `brew install JetBrains/utils/kotlin-lsp` — puts `kotlin-lsp` on PATH (the official JetBrains/IntelliJ-based server). Required by `nvim/lua/plugins/kotlin.lua`.
 
 ## Important Notes
 - Changes to configuration files take effect after running `./setup.sh`
