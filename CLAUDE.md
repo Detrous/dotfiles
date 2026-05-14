@@ -44,6 +44,7 @@ dotfiles/
 │   ├── lazyvim.json  # Selected LazyVim Extras (lang.rust, lang.typescript, lang.kotlin, etc.)
 │   ├── lazy-lock.json  # Pinned plugin versions for reproducible installs
 │   └── lua/
+│       ├── kotlin_test.lua  # Tree-sitter Kotlin test runner (run test/class/main via Gradle/Maven)
 │       ├── config/   # Core config (autocmds, keymaps, options, lazy.lua)
 │       └── plugins/  # Custom plugin specs
 │           └── kotlin.lua  # Swaps community kotlin LS for official JetBrains kotlin-lsp
@@ -65,6 +66,10 @@ dotfiles/
 
 ## Hooks
 - **pre-user-prompt-submit.py** - Validates and enhances user prompts before execution
+
+## Neovim Kotlin Test Runner
+- `nvim/lua/kotlin_test.lua` finds the test block under the cursor via tree-sitter and runs it through Gradle (or Maven), with multi-module detection. Buffer-local keymaps (kotlin filetype) are set in `nvim/lua/config/autocmds.lua`: `<leader>tr` nearest test/main, `<leader>tc` test class, `<leader>ta` all tests, `<leader>tt` task picker, `<leader>tl` re-run last.
+- `vim.o.exrc` is enabled (`nvim/lua/config/options.lua`) so a repo can drop a `.nvim.lua` calling `require("kotlin_test").register_project_tasks{...}` to add repo-specific entries to the `<leader>tt` picker. exrc files are trusted on first use.
 
 ## Development Workflow
 1. Edit configuration files in this repository
