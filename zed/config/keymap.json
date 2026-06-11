@@ -43,5 +43,11 @@
     "bindings": {
       "shift-down": null
     }
+  },
+  {
+    "context": "Terminal || Pane",
+    "bindings": {
+      "ctrl-q": "editor::ToggleFocus"
+    }
   }
 ]
