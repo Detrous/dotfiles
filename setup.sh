@@ -15,18 +15,6 @@ ln -s "$DOTFILES_DIR/claude/commands" "$HOME/.claude/commands"
 ln -s "$DOTFILES_DIR/claude/hooks" "$HOME/.claude/hooks"
 ln -s "$DOTFILES_DIR/claude/skills" "$HOME/.claude/skills"
 
-rm -f "$HOME/.claude-letyshops/CLAUDE.md"
-rm -f "$HOME/.claude-letyshops/settings.json"
-rm -rf "$HOME/.claude-letyshops/commands"
-rm -rf "$HOME/.claude-letyshops/hooks"
-rm -rf "$HOME/.claude-letyshops/skills"
-
-ln -s "$DOTFILES_DIR/claude/CLAUDE.md" "$HOME/.claude-letyshops/CLAUDE.md"
-ln -s "$DOTFILES_DIR/claude/settings.json" "$HOME/.claude-letyshops/settings.json"
-ln -s "$DOTFILES_DIR/claude/commands" "$HOME/.claude-letyshops/commands"
-ln -s "$DOTFILES_DIR/claude/hooks" "$HOME/.claude-letyshops/hooks"
-ln -s "$DOTFILES_DIR/claude/skills" "$HOME/.claude-letyshops/skills"
-
 # Zed config
 mkdir -p "$HOME/.config/zed"
 rm -f "$HOME/.config/zed/keymap.json"
