@@ -64,10 +64,10 @@
       "mcp__basic-memory__read_note"
     ],
     "deny": [
-      "Read(./.env)",
-      "Read(./.env.local)",
-      "Read(./.env.keys)",
-      "Read(./secrets.enc.yaml)"
+      "Read(.env)",
+      "Read(.env.local)",
+      "Read(.env.keys)",
+      "Read(.secrets.enc.yaml)"
     ],
     "defaultMode": "auto"
   },
