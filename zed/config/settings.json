@@ -34,7 +34,11 @@
       "metrics": false
   },
   "format_on_save": "off",
-  "icon_theme": "Catppuccin Mocha",
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Catppuccin Mocha",
+    "dark": "Catppuccin Mocha"
+  },
   "agent": {
     "dock": "right",
     "default_profile": "ask",
@@ -51,7 +55,7 @@
   "ui_font_size": 15,
   "buffer_font_size": 14,
   "theme": {
-    "mode": "system",
+    "mode": "dark",
     "light": "Gruvbox Dark Hard",
     "dark": "Ayu Dark"
   },
