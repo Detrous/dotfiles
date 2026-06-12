@@ -3,7 +3,6 @@ eval "$(pyenv init - zsh)"
 
 source ~/.aliases.zsh
 
-. "$HOME/.local/bin/env"
 . "$HOME/.cargo/env"
 
 export PATH="$HOME/.pyenv/shims:$PATH"
@@ -28,3 +27,4 @@ eval "$(direnv hook zsh)"
 
 # bcode
 export PATH=/Users/detrous/.bcode/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
