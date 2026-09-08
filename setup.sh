@@ -15,6 +15,11 @@ ln -s "$DOTFILES_DIR/claude/commands" "$HOME/.claude/commands"
 ln -s "$DOTFILES_DIR/claude/hooks" "$HOME/.claude/hooks"
 ln -s "$DOTFILES_DIR/claude/skills" "$HOME/.claude/skills"
 
+# Codex global instructions (dotfiles is source of truth)
+mkdir -p "$HOME/.codex"
+rm -f "$HOME/.codex/AGENTS.md"
+ln -s "$DOTFILES_DIR/codex/AGENTS.md" "$HOME/.codex/AGENTS.md"
+
 # Zed config
 mkdir -p "$HOME/.config/zed"
 rm -f "$HOME/.config/zed/keymap.json"
@@ -60,6 +65,7 @@ ln -s "$DOTFILES_DIR/pi/settings.json" "$HOME/.pi/agent/settings.json"
 ln -s "$DOTFILES_DIR/pi/mcp.json" "$HOME/.pi/agent/mcp.json"
 
 echo "Claude config linked"
+echo "Codex AGENTS.md linked"
 echo "Zed config linked"
 echo "Zsh config linked"
 echo "Gradle export-workspace.gradle.kts linked"
