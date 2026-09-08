@@ -19,9 +19,12 @@
 ## Subagents
 - Use subagents proactively at any supported reasoning effort when independent work can materially improve speed or quality. This is a standing request for delegation; no separate confirmation is needed.
 - Choose a proportionate number of agents and give each a bounded task, relevant context, and a clear expected result. Keep simple or tightly coupled work with the main agent when delegation would add overhead.
+- For each subagent, deliberately select the model and reasoning effort for its task and set them explicitly when supported. This is standing authorization to override inherited defaults without confirmation, unless the user explicitly fixes the model or effort.
+- Match capability and effort to ambiguity, complexity, consequences of error, context needs, and latency. Prefer faster, economical models for clear extraction or routine checks; use stronger models and deeper reasoning for difficult debugging, causal analysis, design, and consequential review. Preserve the required quality before optimizing cost.
+- Inherit the parent's configuration only when it fits the delegated task or the runtime cannot override it. Tailor the agent's instructions, context, and expected evidence; reassess its configuration if results are incomplete or unreliable. Briefly explain consequential model choices without asking for approval.
 - Assign separate file ownership for parallel edits, or use isolated worktrees when edits would overlap. Preserve other agents' changes and communicate dependencies before editing shared files.
 - The main agent owns integration and completion: inspect delegated results, resolve conflicts or disagreements, and verify the combined changes before reporting success.
-- Use the configured model by default. Do not translate Claude model names into guessed Codex equivalents.
+- Use model IDs and effort levels supported by the current runtime. Do not invent model names or translate Claude model names into guessed Codex equivalents.
 
 ## Verification and commits
 - Run type checking before tests where available for faster feedback.
