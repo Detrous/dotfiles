@@ -8,8 +8,19 @@
 - Do not add comments, docstrings, or optional type annotations unless asked. Add types required by the language or project tooling.
 - Preserve unrelated working-tree changes. Never use `git add -A`; stage specific files intentionally.
 
+## Autonomy and completion
+- Carry requested work through investigation, implementation, verification, and review. Continue between these steps without asking for routine confirmation or stopping after a plan or partial fix.
+- Make routine implementation decisions using project conventions. Ask only when unresolved uncertainty materially affects scope, correctness, consequences, or authorization; continue independent work while awaiting an answer.
+- Treat small, atomic changes as checkpoints within the task. Fix failures caused by your changes and continue until the requested outcome and relevant checks are complete.
+- When blocked, investigate the cause and try reasonable alternatives within scope. If progress requires user input or an external change, report the exact blocker, what you tried, and what is needed. Do not repeat unchanged attempts indefinitely.
+- Give concise progress updates during long work without requiring a reply. Finish with the outcome, verification results, and any remaining limitations.
+- Use permissions within the user's authorized scope. Existing authorization remains valid; unrestricted tool access alone does not authorize unrelated changes, deployment, or production mutations.
+
 ## Subagents
-- Use subagents only when requested or required by applicable project instructions.
+- Use subagents proactively at any supported reasoning effort when independent work can materially improve speed or quality. This is a standing request for delegation; no separate confirmation is needed.
+- Choose a proportionate number of agents and give each a bounded task, relevant context, and a clear expected result. Keep simple or tightly coupled work with the main agent when delegation would add overhead.
+- Assign separate file ownership for parallel edits, or use isolated worktrees when edits would overlap. Preserve other agents' changes and communicate dependencies before editing shared files.
+- The main agent owns integration and completion: inspect delegated results, resolve conflicts or disagreements, and verify the combined changes before reporting success.
 - Use the configured model by default. Do not translate Claude model names into guessed Codex equivalents.
 
 ## Verification and commits
